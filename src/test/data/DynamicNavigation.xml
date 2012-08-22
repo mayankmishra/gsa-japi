@@ -1,0 +1,33 @@
+<GSP VER="3.2">
+    <TM>0.042157</TM>
+    <Q>mayank</Q>
+    <PARAM name="q" value="mayank" original_value="mayank"/>
+    <PARAM name="btnG" value="Google Search" original_value="Google+Search"/>
+    <PARAM name="access" value="p" original_value="p"/>
+    <PARAM name="client" value="my_frontend" original_value="my_frontend"/>
+    <PARAM name="output" value="xml_no_dtd" original_value="xml_no_dtd"/>
+    <PARAM name="sort" value="date:D:L:d1" original_value="date:D:L:d1"/>
+    <PARAM name="oe" value="UTF-8" original_value="UTF-8"/>
+    <PARAM name="ie" value="UTF-8" original_value="UTF-8"/>
+    <PARAM name="ud" value="1" original_value="1"/>
+    <PARAM name="exclude_apps" value="1" original_value="1"/>
+    <PARAM name="site" value="default_collection" original_value="default_collection"/>
+    <PARAM name="ip" value="127.0.0.1" original_value="127.0.0.1"/>
+    <PARAM name="entqr" value="3" original_value="3"/>
+    <PARAM name="entqrm" value="0" original_value="0"/>
+    <RES SN="1" EN="10">
+        <PARM>
+            <PC>1</PC>
+            <PMT NM="dept" DN="Department" IR="0" T="0">
+                <PV V="Sales" L="" H="" C="8"/>
+                <PV V="Engineering" L="" H="" C="5"/>
+                <PV V="Marketing" L="" H="" C="1"/>
+            </PMT>
+            <PMT NM="join-date" DN="Join Date" IR="1" T="4">
+                <PV V="" L="" H="2010-12-31" C="3700"/>
+                <PV V="" L="2011-01-01" H="2012-01-01" C="790"/>
+                <PV V="" L="2012-01-02" H="" C="91"/>
+            </PMT>
+        </PARM>
+    </RES>
+</GSP>

@@ -188,4 +188,42 @@ public class TestResponseBuilder extends GSATestCase {
         
     }
 
+    public void testDynamicNavigation() throws Exception {
+        GSAResponse response = ResponseBuilder.buildResponse(
+                new FileInputStream("src/test/data/DynamicNavigation.xml"),
+                GSAClient.DEFAULT_XML_SYSTEM_ID);
+        List result = response.getNavigationResponse().getResults();
+
+        GSADynamicNavigationAttribute departmentAttribute = (GSADynamicNavigationAttribute) result.get(0);
+        assertEquals(departmentAttribute.getName(), "dept");
+        assertEquals(departmentAttribute.getLabel(), "Department");
+        assertEquals(departmentAttribute.getType(), 0);
+        assertEquals(departmentAttribute.isRange(), false);
+
+        List departmentAttributeResults = departmentAttribute.getResultList();
+        GSADynamicNavigationAttributeResult departmentAttributeResult = (GSADynamicNavigationAttributeResult) departmentAttributeResults.get(0);
+        assertEquals(departmentAttributeResult.getValue(), "Sales");
+        assertEquals(new Long(8), departmentAttributeResult.getCount());
+        assertEquals(departmentAttributeResult.getLowerRage(), "");
+        assertEquals(departmentAttributeResult.getHigherRange(), "");
+
+
+        GSADynamicNavigationAttribute dateAttribute = (GSADynamicNavigationAttribute) result.get(1);
+        assertEquals(dateAttribute.getName(), "join-date");
+        assertEquals(dateAttribute.getLabel(), "Join Date");
+        assertEquals(dateAttribute.getType(), 4);
+        assertEquals(dateAttribute.isRange(), true);
+
+        List dateAttributeResults = dateAttribute.getResultList();
+        GSADynamicNavigationAttributeResult dateAttributeResult = (GSADynamicNavigationAttributeResult) dateAttributeResults.get(1);
+
+        assertEquals(dateAttributeResult.getValue(), "");
+        assertEquals(new Long(790), dateAttributeResult.getCount());
+        assertEquals(dateAttributeResult.getLowerRage(), "2011-01-01");
+        assertEquals(dateAttributeResult.getHigherRange(), "2012-01-01");
+
+
+
+    }
+
 }
