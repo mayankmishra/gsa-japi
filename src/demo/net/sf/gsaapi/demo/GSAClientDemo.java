@@ -24,10 +24,7 @@ package net.sf.gsaapi.demo;
 
 import java.util.List;
 
-import net.sf.gsaapi.GSAClient;
-import net.sf.gsaapi.GSAQuery;
-import net.sf.gsaapi.GSAResponse;
-import net.sf.gsaapi.GSAResult;
+import net.sf.gsaapi.*;
 import net.sf.gsaapi.GSAQuery.GSAQueryTerm;
 
 /**
@@ -45,7 +42,7 @@ public class GSAClientDemo {
     private static final String HOSTNAME = "my.gsa.host";
     
     // query string to search for
-    private static final String QUERY_STRING = "java sdk";
+    private static final String QUERY_STRING = "java";
     
     // The value for the frontend configured for the GSA 
     // (If you dont know this, ask GSA admin for correct value for your target GSA.)
@@ -79,7 +76,7 @@ public class GSAClientDemo {
         query.setFrontend(SETTING_FRONTEND); // required!
         
         GSAResponse response = client.getGSAResponse(query);
-        
+
         System.out.println("Found " + response.getNumResults() + " results");
         List results = response.getResults();
         System.out.println("Showing top " + results.size() + " results");
@@ -90,6 +87,24 @@ public class GSAClientDemo {
             System.out.println(result.getRating() +"\t" + result.getTitle());
             System.out.println(result.getSummary());
             System.out.println(result.getUrl());
+        }
+
+
+        List navigationResults = response.getNavigationResponse().getResults();
+        for(int i=0, iSize = navigationResults.size(); i<iSize;i++){
+            System.out.println("-----------------");
+            GSADynamicNavigationAttribute navigationAttribute = (GSADynamicNavigationAttribute) navigationResults.get(i);
+            System.out.println("Attribute Name  : " + navigationAttribute.getName());
+            System.out.println("Attribute Label : " + navigationAttribute.getLabel());
+            System.out.println("Attribute isRange : " + navigationAttribute.isRange());
+            System.out.println("Attribute Type : " + navigationAttribute.getType());
+
+            List attributeResultList = navigationAttribute.getResultList();
+            for(int j=0, jSize = attributeResultList.size(); j<jSize; j++){
+                GSADynamicNavigationAttributeResult attributeResult = (GSADynamicNavigationAttributeResult) attributeResultList.get(j);
+                System.out.println("Value: " + attributeResult.getValue() + " (" +attributeResult.getCount() + ")");
+                System.out.println("Range: " + attributeResult.getLowerRage() + " - " + attributeResult.getHigherRange());
+            }
         }
     }
 }
