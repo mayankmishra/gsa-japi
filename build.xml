@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<!--
+ *  Product: GSA-JAPI
+ *  Description: A Java API for programmatically accessing the Google Search
+ *               Appliance.
+ *
+ *  (c) Copyright 2006 Inxight Software, Inc.
+ *
+ *  Licensed under the Inxight Software, Inc., GSA-JAPI License (the "License").
+ *  You may not use this file except in compliance with the License. You should
+ *  have received a copy of the License with this distribution. If not, you may
+ *  obtain a copy by contacting:
+ *
+ *      Inxight Software, Inc.
+ *      500 Macara Ave.
+ *      Sunnyvale, CA 94085
+ *
+ *  Unless required by applicable law or agreed to in writing, software distributed
+ *  under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ *  CONDITIONS OF ANY KIND, either express or implied.  See the License for the
+ *  specific language governing permissions and limitations under the License.
+-->
+<project basedir="." default="dist">
+
+    <property file="build.properties"/>
+
+    <property name="src.demo.dir" value="${basedir}/src/demo/"/>
+    <property name="src.java.dir" value="${basedir}/src/java/"/>
+    <property name="src.test.dir" value="${basedir}/src/test/"/>
+    <property name="src.resources.dir" value="${basedir}/src/resources/"/>
+    <property name="src.meta-inf.dir" value="${src.resources.dir}/META-INF"/>
+
+    <property name="doc.dir" value="${basedir}/apidocs"/>
+    <property name="dist.dir" value="${basedir}/dist"/>
+    <property name="build.dir" value="${basedir}/build"/>
+    <property name="report.dir" value="${basedir}/report"/>
+    <property name="build.meta-inf.dir" value="${build.dir}/META-INF"/>
+
+    <property name="test.lib.dir" value="${build.dir}/lib"/>
+    <property name="test.classes.dir" value="${build.dir}/classes"/>
+
+    <property name="binjar.filepath" value="${dist.dir}/${JARFILE_NAME}-${RELEASE_VERSION}.jar"/>
+    <property name="srcjar.filepath" value="${dist.dir}/${JARFILE_NAME}-src-${RELEASE_VERSION}.jar"/>
+    <property name="docjar.filepath" value="${dist.dir}/${JARFILE_NAME}-doc-${RELEASE_VERSION}.jar"/>
+    <property name="testjar.filepath" value="${dist.dir}/${JARFILE_NAME}-test-${RELEASE_VERSION}.jar"/>
+    <property name="snapshotzip.filepath" value="${dist.dir}/${JARFILE_NAME}-cvssnapshot-${RELEASE_VERSION}.zip"/>
+    <property name="releasezip.filepath" value="${dist.dir}/${JARFILE_NAME}-${RELEASE_VERSION}.zip"/>
+
+
+    <!-- delete the generated folders -->
+    <target name="clean" description="Deletes the generated directories.">
+        <delete dir="${doc.dir}/" failonerror="true"/>
+        <delete dir="${dist.dir}/" failonerror="true"/>
+        <delete dir="${build.dir}/" failonerror="true"/>
+        <delete dir="${report.dir}/" failonerror="true"/>
+    </target>
+
+    <!-- compile the source code and copy files to appropriate locations to prepare for dist -->
+    <target name="build" depends="clean" description="Compile all sources (excluding unit-tests).">
+        <mkdir dir="${build.dir}"/>
+
+        <javac
+            source="1.4"
+            srcdir="${src.java.dir}"
+            destdir="${build.dir}"
+            verbose="false"
+            failonerror="true"/>
+
+        <mkdir dir="${build.meta-inf.dir}" />
+        <copy file="${src.meta-inf.dir}/gsaclient.properties"
+             todir="${build.meta-inf.dir}" />
+
+        <copy todir="${build.dir}">
+            <fileset dir="${basedir}">
+                <include name="LICENSE"/>
+                <include name="README"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <!-- targets for generation of individual jar files -->
+    <target name="dist" depends="bin-jar,doc-jar,test-jar,src-jar"
+        description="Generates the jar files for distribution.">
+      <echo message="Generated source and binary distributions for version: ${RELEASE_VERSION}"/>
+    </target>
+    <target name="prepare-dist">
+        <mkdir dir="${dist.dir}"/>   
+    </target>   
+    <target name="doc-jar" depends="doc,prepare-dist">
+        <jar jarfile="${docjar.filepath}" basedir="${doc.dir}"/>
+    </target>
+    <target name="bin-jar" depends="build,prepare-dist">
+        <jar jarfile="${binjar.filepath}">
+            <fileset dir="${build.dir}" excludes="**/demo/*.class"/>
+        </jar>
+    </target>
+    <target name="src-jar" depends="prepare-dist">
+        <jar jarfile="${srcjar.filepath}">
+            <fileset dir="${src.java.dir}" excludes="**/CVS" includes="**/*.java"/>
+            <fileset dir="${src.demo.dir}" excludes="**/CVS" includes="**/*.java"/>
+            <fileset dir="${src.test.dir}" excludes="**/CVS" includes="**/*.java"/>
+        </jar>
+    </target>
+    <target name="test-jar" depends="test,prepare-dist">
+        <jar jarfile="${testjar.filepath}">
+            <fileset dir="${build.dir}" excludes="**/demo/*.class"/>
+        </jar>
+    </target>
+
+    <!-- Generate doc for main source and demo source -->
+    <target name="doc">
+        <delete dir="${doc.dir}" />
+        <mkdir dir="${doc.dir}"/>
+        <javadoc author="true"
+                 sourcepath="${src.java.dir}"
+                 breakiterator="true"
+                 packagenames="net.sf.gsaapi.*"
+                 destdir="${doc.dir}">
+            <sourcepath>
+                <path location="${src.demo.dir}" />
+                <path location="${src.java.dir}" />
+            </sourcepath>
+          <doctitle><![CDATA[<h1>GSA-JAPI - A Java API for the Google Search Appliance</h1>]]></doctitle>
+          <bottom><![CDATA[<p align="center">&#169; Copyright 2006 Inxight Software, Inc.</p>]]></bottom>
+        </javadoc>
+    </target>
+
+    <!-- Generate a release zip file -->
+    <target name="release" depends="dist,snapshot-zip" description="Generate the release zip file.">
+        <zip basedir="${dist.dir}/"
+            includes="*.jar"   
+            destfile="${releasezip.filepath}"/>
+    </target>
+    <target name="snapshot-zip" depends="clean">
+        <jar jarfile="${snapshotzip.filepath}">
+            <fileset dir="${basedir}" excludes="**/CVS/*,**/*.class,**/.settings/*"/>
+        </jar>
+    </target>   
+
+    <!-- Run unit tests and generate reports -->
+    <target name="test" depends="bin-jar"
+        description="Compile and run all unit tests. Reports in '${report.dir}'">
+        <delete dir="${build.dir}"/>
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.test.dir}"
+            source="1.4"
+            destdir="${build.dir}"
+            verbose="false"
+            failonerror="true"
+            classpath="${binjar.filepath}"/>
+
+        <mkdir dir="${report.dir}"/>
+        <junit fork="false" haltonerror="false">
+            <formatter type="xml" />
+
+            <classpath>
+                <dirset dir="${build.dir}"/>
+
+                <path>
+                    <pathelement path="${binjar.filepath}"/>
+                </path>
+            </classpath>
+
+            <batchtest todir="${report.dir}">
+                <fileset dir="${build.dir}">
+                    <include name="**/Test*.class"/>
+                </fileset>
+            </batchtest>
+        </junit>
+
+        <junitreport todir="${report.dir}">
+            <fileset dir="${report.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${report.dir}"/>
+        </junitreport>
+    </target>
+
+</project>

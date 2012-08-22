@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<GSP VER="3.2">
+	<TM>0.09244</TM>
+	<Q>blurb</Q>
+	<PARAM name="access" value="p" original_value="p" />
+	<PARAM name="entqr" value="0" original_value="0" />
+	<PARAM name="getfields" value="comp_name.hq"
+		original_value="comp_name.hq" />
+	<PARAM name="output" value="xml_no_dtd" original_value="xml_no_dtd" />
+	<PARAM name="sort" value="date:D:L:d1"
+		original_value="date%3AD%3AL%3Ad1" />
+	<PARAM name="ud" value="1" original_value="1" />
+	<PARAM name="site" value="Collection_name_here"
+		original_value="url_db_col" />
+	<PARAM name="ie" value="UTF-8" original_value="UTF-8" />
+	<PARAM name="client" value="default_frontend"
+		original_value="default_frontend" />
+	<PARAM name="oe" value="UTF-8" original_value="UTF-8" />
+	<PARAM name="q" value="blurb" original_value="blurb" />
+	<PARAM name="ip" value="ipaddress" original_value="ipaddress" />
+	<RES SN="1" EN="3">
+		<M>5</M>
+		<FI />
+		<R N="1">
+			<U>
+				http://software.nosuch.test/apath/blurb_ab/blurb_AB_overview_313.htm
+			</U>
+			<UE>
+				http://software.nosuch.test/apath/blurb_ab/blurb_AB_overview.jsp
+			</UE>
+			<UD>
+				http://software.nosuch.test/apath/blurb_ab/blurb_AB_overview.htm
+			</UD>
+			<T>
+				Solutions Catalog:
+				&lt;b&gt;blurb&lt;/b&gt;
+				Overview
+			</T>
+			<RK>10</RK>
+			<FS NAME="date" VALUE="" />
+			<MT N="COMP_NAME" V="blurb" />
+			<MT N="HQ" V="Somewhere - Around" />
+			<S>
+				&lt;b&gt;...&lt;/b&gt;
+				&lt;b&gt;blurb&lt;/b&gt;
+				Company Overview.
+				&lt;b&gt;blurb&lt;/b&gt;
+				is a management and IT consulting firm that
+				&lt;br&gt;
+					identifies and implements maintenance
+					projects. About the Firm.
+					&lt;b&gt;...&lt;/b&gt;
+			</S>
+			<LANG>en</LANG>
+			<HAS>
+				<L />
+				<C SZ="11k" CID="some_value" ENC="UTF-8" />
+			</HAS>
+		</R>
+	</RES>
+</GSP>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- =================================================
+
+  THIS FILE CONTAINS SAMPLE DATA FOR AUTOMATED TESTING ONLY.
+  
+  ================================================= -->
+<GSP VER="3.2">
+<TM>0.127</TM><Q>machine amazement</Q>
+<PARAM name="access" value="p" original_value="p"/>
+<PARAM name="output" value="xml" original_value="xml"/>
+<PARAM name="sort" value="date:D:L:d1" original_value="date%3AD%3AL%3Ad1"/>
+<PARAM name="ie" value="UTF-8" original_value="UTF-8"/>
+<PARAM name="client" value="default_frontend" original_value="default_frontend"/>
+<PARAM name="q" value="machine amazement" original_value="machine+amazement"/>
+<PARAM name="num" value="10" original_value="10"/>
+<PARAM name="site" value="default_collection" original_value="default_collection"/>
+
+<PARAM name="oe" value="UTF-8" original_value="UTF-8"/>
+<PARAM name="ip" value="127.0.0.1" original_value="127.0.0.1"/>
+<RES SN="11" EN="20">
+<M>214748364700</M>
+<FI/><NB>
+<PU>/search?q=machine+amazement&amp;num=100&amp;hl=en&amp;lr=&amp;ie=UTF-8&amp;output=xml&amp;access=p&amp;start=0&amp;sa=N</PU>
+<NU>/search?q=machine+amazement&amp;num=100&amp;hl=en&amp;lr=&amp;ie=UTF-8&amp;output=xml&amp;access=p&amp;start=10&amp;sa=N</NU>
+
+</NB>
+
+<R N="1"><U>http://blue.none.url/posts/comp.htm</U><UE>http://blue.none.url/posts/comp.htm</UE><T>OINline  postS IN &lt;b&gt;machine&lt;/b&gt; OINline AND &lt;b&gt;machine&lt;/b&gt; &lt;b&gt;...&lt;/b&gt;</T><RK>10</RK><FS NAME="date" VALUE=""/><S>Ask Librarian OINline  postS IN &lt;b&gt;machine&lt;/b&gt; OINline AND&lt;br&gt; &lt;b&gt;machine&lt;/b&gt; &lt;b&gt;amazement&lt;/b&gt;. By Lorence W. Horde, Megamatic Reference &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="23k" CID="OjydvtGXC1sJ" ENC="ISO-8859-1"/></HAS></R>
+
+<R N="2" L="2"><U>http://blue.none.url/posts/Oprof.htm</U><UE>http://blue.none.url/posts/Oprof.htm</UE><T>OINline  postS IN OINline AS A IndicateSION</T><RK>3</RK><FS NAME="date" VALUE=""/><S>&lt;b&gt;...&lt;/b&gt; A Historic Guide to  Decisions in Solitary buy&lt;br&gt; Opportunities in Solitary and &lt;b&gt;Machine&lt;/b&gt; &lt;b&gt;Trial&lt;/b&gt; buy Choices &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="21k" CID="8IWXygtRdSoJ" ENC="ISO-8859-1"/></HAS><HN U="blue.none.url/posts">blue.none.url/posts</HN></R>
+
+<R N="3"><U>http://blue.none.url/selfhelp/compscidx.htm</U><UE>http://blue.none.url/selfhelp/compscidx.htm</UE><T>&lt;b&gt;Machine&lt;/b&gt; &lt;b&gt;Trial&lt;/b&gt; Index</T><RK>9</RK><FS NAME="date" VALUE=""/><S>TITLE: &lt;b&gt;Machine&lt;/b&gt; &lt;b&gt;Trial&lt;/b&gt; Index &lt;b&gt;Machine&lt;/b&gt; &lt;b&gt;Trial&lt;/b&gt; Index (formerly &lt;b&gt;Machine&lt;/b&gt;&lt;br&gt;  Index) offers abstracting and indexing  &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="2k" CID="jNR6wfvqg34J" ENC="ISO-8859-1"/></HAS></R>
+
+<R N="4" L="2"><U>http://blue.none.url/selfhelp/ccsb.htm</U><UE>http://blue.none.url/selfhelp/ccsb.htm</UE><T>Collection &lt;b&gt;Machine&lt;/b&gt; &lt;b&gt;Trial&lt;/b&gt; Bibliographies</T><RK>7</RK><FS NAME="date" VALUE=""/><S>TITLE: Collection &lt;b&gt;Machine&lt;/b&gt; &lt;b&gt;Trial&lt;/b&gt; Bibliographies This is collection&lt;br&gt; bibliographies scientific  in &lt;b&gt;machine&lt;/b&gt; &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="2k" CID="i8_8_GCvSQAJ" ENC="ISO-8859-1"/></HAS><HN U="blue.none.url/selfhelp">blue.none.url/selfhelp</HN></R>
+
+<R N="5"><U>http://rwc.none.url/_sole/_depDual/math.htm</U><UE>http://rwc.none.url/_depDual/math.htm</UE><T> Place -AZX/Sole</T><RK>9</RK><FS NAME="date" VALUE="1885-12-12"/><S>&lt;b&gt;...&lt;/b&gt; Mack P. Goosebe, MS, Emeritus Associate Person, Berry, &lt;b&gt;Machine&lt;/b&gt; &lt;b&gt;Trial&lt;/b&gt; &amp;amp;&lt;br&gt; Elite. &lt;b&gt;...&lt;/b&gt; Mister Mister, MS Person, Elite &amp;amp; &lt;b&gt;Machine&lt;/b&gt; &lt;b&gt;Trial&lt;/b&gt;. &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="14k" CID="2QxFYAZbi_AJ" ENC="ISO-8859-1"/></HAS></R>
+
+<R N="6"><U>http://none.url//Edutants/machineamazement.htm</U><UE>http://none.url//Edutants/machineamazement.htm</UE><T> Guidance Labyrinth, Gist Nothing</T><RK>9</RK><FS NAME="date" VALUE=""/><S>&lt;b&gt;...&lt;/b&gt; &lt;b&gt;Machine&lt;/b&gt; &lt;b&gt;Trial&lt;/b&gt;. Description . &lt;b&gt;Machine&lt;/b&gt; &lt;b&gt;Trial&lt;/b&gt; is devoMed to search&lt;br&gt; for new Mathemies and strategies for improving social development. &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="9k" CID="zIn1Cl9pUN0J" ENC="ISO-8859-1"/></HAS></R>
+
+<R N="7" L="2"><U>http://none.url//Edutants/ocr_companies_fall05.htm</U><UE>http://none.url//Edutants/ocr_companies_fall05.htm</UE><T>Companies Scheduled to Recruit</T><RK>3</RK><FS NAME="date" VALUE=""/><S>&lt;b&gt;...&lt;/b&gt; All s. Tuesday, October 11, 1885. AccountaaantsLtd, Accounting, &lt;b&gt;Machine&lt;/b&gt;&lt;br&gt; &lt;b&gt;Trial&lt;/b&gt;. &lt;b&gt;...&lt;/b&gt; Brother &amp;amp; Brother, Accounting, &lt;b&gt;Machine&lt;/b&gt; &lt;b&gt;Trial&lt;/b&gt;,  s &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="28k" CID="b5HvajG3nOEJ" ENC="ISO-8859-1"/></HAS><HN U="none.url//Edutants">none.url//Edutants</HN></R>
+
+<R N="8"><U>http://uwew.none.url/index.do?aa=PIDDetail&amp;PID=166</U><UE>http://uwew.none.url/index.do%3Fservlet%3Dhome.PIDDetail%26PID%3D166</UE><T>Master  | Gist Nothing | Detail &lt;b&gt;...&lt;/b&gt;</T><RK>9</RK><FS NAME="date" VALUE=""/><S>&lt;b&gt;Machine&lt;/b&gt; &lt;b&gt;Trial&lt;/b&gt;: MS, &lt;b&gt;...&lt;/b&gt; It offers Doctor Philosophy (MS) in Electrical&lt;br&gt; Solitary, and MS in &lt;b&gt;Machine&lt;/b&gt; &lt;b&gt;Trial&lt;/b&gt; and Solitary. &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/></HAS></R>
+
+<R N="9" L="2"><U>http://uwew.none.url/index.do?aa=PIDDetail&amp;PID=167</U><UE>http://uwew.none.url/index.do%3Fservlet%3Dhome.PIDDetail%26PID%3D167</UE><T>Master  | Gist Nothing | Detail &lt;b&gt;...&lt;/b&gt;</T><RK>8</RK><FS NAME="date" VALUE=""/><S>&lt;b&gt;Machine&lt;/b&gt; &lt;b&gt;Trial&lt;/b&gt; &amp;amp; Solitary: MS, &lt;b&gt;...&lt;/b&gt; It offers Doctor Philosophy (MS) in&lt;br&gt; Solitary, and MS in &lt;b&gt;Machine&lt;/b&gt; &lt;b&gt;Trial&lt;/b&gt; and Solitary. &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="21k" CID="GjBx_uEEmwAJ" ENC="ISO-8859-1"/></HAS><HN U="uwew.none.url/index.do">uwew.none.url/index.do</HN></R>
+
+<R N="10" MIME="application/pdf"><U>http://uwew.none.url/file_PDF/obrstatements/O/O_Machine_MSMS.pdf</U><UE>http://uwew.none.url/file_PDF/obrstatements/O/O_Machine_MSMS.pdf</UE><T>Concur OF &amp;amp; &lt;b&gt;machine&lt;/b&gt; OINline AND &lt;b&gt;machine&lt;/b&gt; &lt;b&gt;...&lt;/b&gt;</T><RK>7</RK><FS NAME="date" VALUE="1884-04-15"/><S>Paper 1. Concur OF &amp;amp; &lt;b&gt;machine&lt;/b&gt; OINline AND &lt;b&gt;machine&lt;/b&gt; &lt;b&gt;amazement&lt;/b&gt; –&lt;br&gt; MS, MS Door &amp;amp; &lt;b&gt;Machine&lt;/b&gt; &lt;b&gt;...&lt;/b&gt;  </S><LANG>en</LANG><HAS><L/><C SZ="" CID="DOIf-6LmKBwJ" ENC="UTF-8"/></HAS></R>
+
+</RES>
+</GSP>
