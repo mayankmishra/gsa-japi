@@ -67,6 +67,13 @@ public class ResponseBuilder extends DefaultHandler {
     private boolean inOneBoxResponse = false;
     private boolean inKeymatchResults = false;
 
+    private GSADynamicNavigationAttribute currNavigationAttribute;
+    private GSADynamicNavigationResponse navigationResponse;
+    private List navgationResultList;
+
+    private boolean inNavigationResponse = false;
+    private boolean inNavigationResult  = false;
+
     private ResponseBuilder() {}
 
     /**
@@ -120,6 +127,10 @@ public class ResponseBuilder extends DefaultHandler {
         currOneBoxResponse = new GSAOneBoxResponse();
         currOneBoxResult = new GSAOneBoxResult();
         currKeymatch = new GSAKeymatch();
+
+        currNavigationAttribute = new GSADynamicNavigationAttribute();
+        navigationResponse = new GSADynamicNavigationResponse();
+        navgationResultList = new ArrayList();
     }
 
     /**
@@ -129,6 +140,8 @@ public class ResponseBuilder extends DefaultHandler {
         int tag = getTagIndex(qName);
         inResponse = inResponse || (tag == RES); // inside response element
         inResult = inResponse && (inResult || (tag == R)); // inside results element
+        inNavigationResponse = inNavigationResponse || (tag == PARM); // inside PARM element i.e Navigation Response
+        inNavigationResult = inNavigationResult || (tag == PMT); // inside PMT element i.e Navigation Result
         inOneBoxResponse = inOneBoxResponse || (tag == OBRES);
         inKeymatchResults = inKeymatchResults || (tag == GM) ;
         inOneBoxResult = inOneBoxResponse && (inOneBoxResult || (tag == MODULE_RESULT)); // inside oneBox results element
@@ -201,6 +214,34 @@ public class ResponseBuilder extends DefaultHandler {
                 response.addSynonymWithMarkup(attributes.getValue("q"));
             }
             break;
+
+        case PARM:
+            break;
+
+        case PMT:
+            String attrName = attributes.getValue("NM");
+            String attrLabel = attributes.getValue("DN");
+            String attrType = attributes.getValue("T");
+            currNavigationAttribute.setName(attrName);
+            currNavigationAttribute.setLabel(attrLabel);
+            currNavigationAttribute.setType(Integer.parseInt(attributes.getValue("T")));
+            currNavigationAttribute.setRange(attributes.getValue("IR").equals("1"));
+            break;
+
+        case PV:
+            if(inNavigationResult){
+                GSADynamicNavigationAttributeResult currGSADynamicNavigationAttributeResult = new GSADynamicNavigationAttributeResult();
+                String attrValue = attributes.getValue("V");
+                String count = attributes.getValue("C");
+                String lowRange = attributes.getValue("L");
+                String highRange = attributes.getValue("H");
+                currGSADynamicNavigationAttributeResult.setValue(attrValue);
+                currGSADynamicNavigationAttributeResult.setCount(count != "" ? Long.parseLong(count) : 0);
+                currGSADynamicNavigationAttributeResult.setLowerRage(lowRange);
+                currGSADynamicNavigationAttributeResult.setHigherRange(highRange);
+                currNavigationAttribute.addAttributeResult(currGSADynamicNavigationAttributeResult);
+            }
+            break;
         }
         clearContent();
     }
@@ -224,6 +265,10 @@ public class ResponseBuilder extends DefaultHandler {
             doOneBoxResponse(tag);
         } else if (inResult) {
             doResult(tag);
+        } else if(inNavigationResult){
+            doNavigationResult(tag);
+        } else if(inNavigationResponse){
+            doNavigationResponse(tag);
         } else if (inResponse) {
             doResponse(tag);
         } else if (inSpelling) {
@@ -254,6 +299,25 @@ public class ResponseBuilder extends DefaultHandler {
         case GL:
             currKeymatch.setUrl(contentBuff.toString());
             break;
+        }
+    }
+
+    private void doNavigationResult(int tag){
+        switch (tag){
+            case PMT:
+                navgationResultList.add(currNavigationAttribute);
+                currNavigationAttribute = new GSADynamicNavigationAttribute();
+                inNavigationResult = false;
+                break;
+        }
+    }
+
+    private void doNavigationResponse(int tag){
+        switch (tag){
+            case PARM:
+                navigationResponse.setResults(navgationResultList);
+                inNavigationResponse = false;
+                break;
         }
     }
 
@@ -308,6 +372,7 @@ public class ResponseBuilder extends DefaultHandler {
         switch (tag) {
         case RES:
             response.setResults(resultsList);
+            response.setNavigationResponse(navigationResponse);
             inResponse = false;
             break;
         case M:
@@ -417,7 +482,11 @@ public class ResponseBuilder extends DefaultHandler {
     private static final int GM = 35;
     private static final int GL = 36;
     private static final int GD = 37;
-    
+
+    private static final int PARM = 38;
+    private static final int PC = 39;
+    private static final int PMT = 40;
+    private static final int PV = 41;
 
     private static Map INDEX_MAP = new HashMap();
 
@@ -456,7 +525,11 @@ public class ResponseBuilder extends DefaultHandler {
         INDEX_MAP.put("GM", new Integer(GM));
         INDEX_MAP.put("GL", new Integer(GL));
         INDEX_MAP.put("GD", new Integer(GD));
-        
+
+        INDEX_MAP.put("PARM", new Integer(PARM));
+        INDEX_MAP.put("PC", new Integer(PC));
+        INDEX_MAP.put("PMT", new Integer(PMT));
+        INDEX_MAP.put("PV", new Integer(PV));
     }
 
 }

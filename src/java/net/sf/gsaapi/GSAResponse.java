@@ -48,6 +48,7 @@ public class GSAResponse {
     private List results = new ArrayList();
     private List oneboxResponses = new ArrayList();
     private List keymatchResults = new ArrayList();
+    private GSADynamicNavigationResponse navigationResponse = new GSADynamicNavigationResponse();
 
     /**
      * constructor is intended for internal use only.
@@ -243,7 +244,15 @@ public class GSAResponse {
     public List getResults() {
         return results;
     }
-    
+
+    public GSADynamicNavigationResponse getNavigationResponse() {
+        return navigationResponse;
+    }
+
+    public void setNavigationResponse(GSADynamicNavigationResponse navigationResponse) {
+        this.navigationResponse = navigationResponse;
+    }
+
     /**
      * to aid in debugging
      * @return String indicating the value of internal fields.
